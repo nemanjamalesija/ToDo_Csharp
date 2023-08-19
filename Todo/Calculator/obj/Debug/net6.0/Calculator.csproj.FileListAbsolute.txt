@@ -1,0 +1,14 @@
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\Calculator.AssemblyInfoInputs.cache
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\Calculator.AssemblyInfo.cs
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\Calculator.csproj.CoreCompileInputs.cache
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\bin\Debug\net6.0\Calculator.exe
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\bin\Debug\net6.0\Calculator.deps.json
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\bin\Debug\net6.0\Calculator.runtimeconfig.json
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\bin\Debug\net6.0\Calculator.dll
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\bin\Debug\net6.0\Calculator.pdb
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\Calculator.dll
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\refint\Calculator.dll
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\Calculator.pdb
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\Calculator.genruntimeconfig.cache
+C:\Users\males\Desktop\ToDo_Csharp\Todo\Calculator\obj\Debug\net6.0\ref\Calculator.dll

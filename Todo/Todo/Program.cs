@@ -2,23 +2,6 @@
 
 
 
-
-
-
-/*
-if (userChoice == "A")
-{
-
-    stringList.Add(userChoice);
-    Console.WriteLine("Todo added");
-
-}
-
-Console.ReadKey();
-
-*/
-
-
 public class TodoList
 {
     List<string> stringList = new List<string>();
@@ -72,3 +55,6 @@ public class TodoList
         Console.WriteLine("Todo added");
     }
 }
+
+
+
