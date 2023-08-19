@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\males\\Desktop\\ToDo_Csharp\\Todo\\Todo\\TodoList.csproj",
+      "projectUniqueName": "C:\\Users\\males\\Desktop\\ToDo_Csharp\\Projects\\Todo\\TodoList.csproj",
       "projectName": "TodoList",
-      "projectPath": "C:\\Users\\males\\Desktop\\ToDo_Csharp\\Todo\\Todo\\TodoList.csproj",
+      "projectPath": "C:\\Users\\males\\Desktop\\ToDo_Csharp\\Projects\\Todo\\TodoList.csproj",
       "packagesPath": "C:\\Users\\males\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\males\\Desktop\\ToDo_Csharp\\Todo\\Todo\\obj\\",
+      "outputPath": "C:\\Users\\males\\Desktop\\ToDo_Csharp\\Projects\\Todo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\males\\AppData\\Roaming\\NuGet\\NuGet.Config",

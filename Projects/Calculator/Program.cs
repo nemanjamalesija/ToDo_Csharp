@@ -67,9 +67,6 @@ public class Calculator
         restartOrExit();
 
 
-
-        Console.ReadKey();
-
     }
 
     int validateUserInput()
