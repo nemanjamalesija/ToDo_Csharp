@@ -51,26 +51,29 @@ public class Calculator
     }
 
     double validateUserInput()
-    {
+    { 
+
         double intCompared;
         bool isDouble;
 
+        do
         {
-            while (true)
+            userInput = Console.ReadLine() ?? "";
+            isDouble = double.TryParse(userInput, out intCompared);
+
+            if (!isDouble)
             {
-                userInput = Console.ReadLine() ?? "";
-                isDouble = double.TryParse(userInput, out intCompared);
+                Console.WriteLine("Please provide valid input");
+            }
 
-                if (isDouble)
-                {
-                    return double.Parse(userInput);
-                }
-                else Console.WriteLine("Please provide valid input.");
-            };
+        } while (!isDouble);
 
-        }
 
+
+        return double.Parse(userInput);
     }
+
+
 
     void defineOperation()
     {
@@ -80,20 +83,19 @@ public class Calculator
         Console.WriteLine("[M]ultiple");
         Console.WriteLine("[D]ivide");
 
-        while (true)
+        do
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // Read a single key without displaying it
             operation = char.ToLower(keyInfo.KeyChar);
 
-            if (operation == 'a' || operation == 's' || operation == 'm' || operation == 'd')
-            {
-                break; // Exit the loop when a valid operation is entered
-            }
-            else
+            if (operation != 'a' && operation != 's' && operation != 'm' && operation != 'd')
             {
                 Console.WriteLine("Please provide a valid operation.");
             }
+         
         }
+
+        while (operation != 'a' && operation != 's' &&  operation != 'm' &&   operation != 'd');
 
     }
 
@@ -125,17 +127,17 @@ public class Calculator
         return a / b;
     }
 
-
     void restartOrExit()
     {
 
         Console.WriteLine("Press Y to restart, press N to exit.");
 
-        while (true)
 
+        do
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // Read a single key without displaying it
             restart = char.ToLower(keyInfo.KeyChar);
+
 
             if (restart == 'y')
             {
@@ -144,15 +146,16 @@ public class Calculator
 
             if (restart == 'n')
             {
-                Environment.Exit(0);     
+                Environment.Exit(0);
             }
 
             else
             {
                 Console.WriteLine("Please provide valid input: Y to restart, N to exit.");
             }
-
         }
+
+        while (restart != 'y' && restart != 'n');
 
     }
 }

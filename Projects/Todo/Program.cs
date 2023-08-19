@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-
 public class TodoList
 {
     List<string> stringList = new List<string>();
@@ -55,6 +54,9 @@ public class TodoList
         Console.WriteLine("Todo added");
     }
 }
+
+
+
 
 
 
