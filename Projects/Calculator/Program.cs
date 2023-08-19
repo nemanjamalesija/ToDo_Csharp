@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-
+﻿
 public class Calculator
 {
     string userInput = string.Empty;
@@ -35,49 +33,40 @@ public class Calculator
 
         if (operation == 's')
         {
-
             result = subtract(firstOperand, secondOperand);
         }
 
         if (operation == 'm')
         {
-
             result = multiply(firstOperand, secondOperand);
-
         }
 
         if (operation == 'd')
         {
-
             result = divide(firstOperand, secondOperand);
         }
 
-
         Console.WriteLine($"Result: {result}");
         restartOrExit();
-
     }
 
     double validateUserInput()
     {
         double intCompared;
-        userInput = Console.ReadLine();
-        bool res = double.TryParse(userInput, out intCompared);
-       
+        bool isDouble;
 
         {
-
-            while (!res)
+            while (true)
             {
-                Console.WriteLine("Please provide a valid input.");
-                userInput = Console.ReadLine();
-                res = double.TryParse(userInput, out intCompared);
+                userInput = Console.ReadLine() ?? "";
+                isDouble = double.TryParse(userInput, out intCompared);
 
-            }
-
-          
-            return double.Parse(userInput);
-          
+                if (isDouble)
+                {
+                    return double.Parse(userInput);
+                }
+                else Console.WriteLine("Please provide valid input.");
+            };
 
         }
 
@@ -85,21 +74,16 @@ public class Calculator
 
     void defineOperation()
     {
-
         Console.WriteLine("What would you like to do?");
         Console.WriteLine("[A]dd");
         Console.WriteLine("[S]ubtract");
         Console.WriteLine("[M]ultiple");
         Console.WriteLine("[D]ivide");
 
-
-       
         while (true)
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // Read a single key without displaying it
             operation = char.ToLower(keyInfo.KeyChar);
-
-      
 
             if (operation == 'a' || operation == 's' || operation == 'm' || operation == 'd')
             {
@@ -114,31 +98,28 @@ public class Calculator
     }
 
     // operations
-    double add (double a, double b)
+    double add(double a, double b)
     {
-
         return a + b;
     }
 
     double subtract(double a, double b)
     {
-
         return a - b;
     }
 
-    double multiply (double a, double b)
+    double multiply(double a, double b)
     {
         return a * b;
     }
 
-    double divide (double a, double b)
+    double divide(double a, double b)
     {
 
         if (a == 0 || b == 0)
         {
             Console.WriteLine("Cannot divide by 0.");
             initializeProgram();
-
         }
 
         return a / b;
@@ -151,28 +132,24 @@ public class Calculator
         Console.WriteLine("Press Y to restart, press N to exit.");
 
         while (true)
-           
+
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // Read a single key without displaying it
             restart = char.ToLower(keyInfo.KeyChar);
 
             if (restart == 'y')
             {
-                
                 initializeProgram();
             }
 
             if (restart == 'n')
             {
-
-          
-                Environment.Exit(0);
+                Environment.Exit(0);     
             }
 
             else
             {
                 Console.WriteLine("Please provide valid input: Y to restart, N to exit.");
-
             }
 
         }
