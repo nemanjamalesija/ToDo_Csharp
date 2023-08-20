@@ -46,10 +46,10 @@ public class TodoList
             if (userChoiceSARE.ToString().ToUpper() == "R")
             {
                
-                Console.WriteLine("Select the index of todo you want to remove.");
+                Console.WriteLine("Select the index of todo you want to remove:");
                 PrintTodos();
                 userChoiceTODO = getUserInput();
-                removeTodo(userChoiceSARE);
+                removeTodo(userChoiceTODO);
             }
 
             if (userChoiceSARE.ToString().ToUpper() == "E")
