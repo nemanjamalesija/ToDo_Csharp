@@ -1,4 +1,9 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+
 public class Calculator
 {
     string userInput = string.Empty;
@@ -92,10 +97,9 @@ public class Calculator
             {
                 Console.WriteLine("Please provide a valid operation.");
             }
-         
         }
 
-        while (operation != 'a' && operation != 's' &&  operation != 'm' &&   operation != 'd');
+        while (operation != 'a' && operation != 's' &&  operation != 'm' && operation != 'd');
 
     }
 
