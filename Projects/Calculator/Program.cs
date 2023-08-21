@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 
+
 public class Calculator
 {
     string userInput = string.Empty;
@@ -11,7 +12,8 @@ public class Calculator
     double secondOperand;
     char operation;
     double result;
-    char restart;
+  
+    public string Sir { get; set; }
 
     public static void Main()
     {
@@ -78,7 +80,7 @@ public class Calculator
         return double.Parse(userInput);
     }
 
-
+    
 
     void defineOperation()
     {
@@ -90,7 +92,7 @@ public class Calculator
 
         do
         {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // Read a single key without displaying it
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true); // Read a single key without displaying it
             operation = char.ToLower(keyInfo.KeyChar);
 
             if (operation != 'a' && operation != 's' && operation != 'm' && operation != 'd')
@@ -139,7 +141,7 @@ public class Calculator
 
         do
         {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // Read a single key without displaying it
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true); // Read a single key without displaying it
             restart = char.ToLower(keyInfo.KeyChar);
 
 
