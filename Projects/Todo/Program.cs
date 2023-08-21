@@ -19,14 +19,14 @@ public class TodoList
         {
              Console.WriteLine("What would you want to do ?");
             
-             askUserForActionSARE();
+             AskUserForActionSARE();
             UserChoiceSARE = GetUserInput();
 
             if (!(ValidateUserChoiceSARE(UserChoiceSARE)))
             {
 
                 Console.WriteLine("Please select correct input.");
-                askUserForActionSARE();
+                AskUserForActionSARE();
                 UserChoiceSARE = GetUserInput();
             }
 
@@ -70,7 +70,7 @@ public class TodoList
         return keyPressed.KeyChar;
     }
 
-    void askUserForActionSARE()
+    void AskUserForActionSARE()
     {
    
         Console.WriteLine("[S]ee all todos");
