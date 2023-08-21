@@ -3,13 +3,13 @@ using System;
 
 public class TodoList
 {
-    List<string> stringList = new List<string>(); 
-    char userChoiceSARE; 
-    char userChoiceTODO; 
+    readonly List<string> StringList = new(); 
+    private char UserChoiceSARE {  get; set; }
+    private char UserChoiceTODO { get; set; }
 
     public static void Main()
     {
-        TodoList todoList = new TodoList();
+        TodoList todoList = new();
         todoList.RunTodoApp();
     }
 
@@ -20,44 +20,51 @@ public class TodoList
              Console.WriteLine("What would you want to do ?");
             
              askUserForActionSARE();
-             userChoiceSARE = getUserInput();
+            UserChoiceSARE = GetUserInput();
 
-            if (!(validateUserChoiceSARE(userChoiceSARE)))
+            if (!(ValidateUserChoiceSARE(UserChoiceSARE)))
             {
 
                 Console.WriteLine("Please select correct input.");
                 askUserForActionSARE();
-                userChoiceSARE = getUserInput();
+                UserChoiceSARE = GetUserInput();
             }
 
-            if (userChoiceSARE.ToString().ToUpper() == "S")
+            if (UserChoiceSARE.ToString().ToUpper() == "S")
             {
                 PrintTodos();
             }
-              if (userChoiceSARE.ToString().ToUpper() == "A")
+              if (UserChoiceSARE.ToString().ToUpper() == "A")
             {
                 Console.WriteLine("Enter the new todo:");
-                string newTodo = getNewTodo();
+                string newTodo = GetNewTodo();
                 AddTodo(newTodo);
             }
 
-            if (userChoiceSARE.ToString().ToUpper() == "R")
+            if (UserChoiceSARE.ToString().ToUpper() == "R")
             {
-               
+                if (StringList.Count == 0)
+                {
+
+                    Console.WriteLine("You have no todos.");
+                    RunTodoApp();
+                    return;
+                }
+
                 Console.WriteLine("Select the index of todo you want to remove:");
                 PrintTodos();
-                userChoiceTODO = getUserInput();
-                removeTodo(userChoiceTODO);
+                UserChoiceTODO = GetUserInput();
+                RemoveTodo(UserChoiceTODO);
             }
 
-            if (userChoiceSARE.ToString().ToUpper() == "E")
+            if (UserChoiceTODO.ToString().ToUpper() == "E")
             {
                 break; // Exit the loop and end the application
             }
         }
     }
 
-    char getUserInput()
+   static char GetUserInput()
     {
         ConsoleKeyInfo keyPressed = Console.ReadKey(true);
         return keyPressed.KeyChar;
@@ -74,13 +81,13 @@ public class TodoList
 
     }
 
-    string getNewTodo ()
+   static string GetNewTodo ()
     {
         string newTodo = Console.ReadLine() ?? "";
         return newTodo;
     }
 
-    bool validateUserChoiceSARE(char input)
+     static bool ValidateUserChoiceSARE(char input)
     {
       string comp = input.ToString().ToUpper();
 
@@ -100,7 +107,7 @@ public class TodoList
 
     void PrintTodos()
     {
-        if (stringList.Count == 0)
+        if (StringList.Count == 0)
         {
 
             Console.WriteLine("You have no todos.");
@@ -108,9 +115,9 @@ public class TodoList
             return;
         }
 
-        for (int i = 0; i < stringList.Count; i++)
+        for (int i = 0; i < StringList.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {stringList[i]}");
+            Console.WriteLine($"{i + 1}. {StringList[i]}");
         }
 
         Console.WriteLine();
@@ -123,66 +130,70 @@ public class TodoList
         {
             Console.WriteLine("The todo input cannot be empty.");
             Console.WriteLine();
-            string newTodo = getNewTodo();
+            string newTodo = GetNewTodo();
             AddTodo(newTodo);
 
         }
 
-        if (stringList.Contains(todo)) {
+        if (StringList.Contains(todo)) {
 
             Console.WriteLine("This todo is already in your list of todos.");
             Console.WriteLine();
-            string newTodo = getNewTodo();
+            string newTodo = GetNewTodo();
             AddTodo(newTodo);
 
         }
 
-        stringList.Add(todo);
+        StringList.Add(todo);
         Console.WriteLine("Todo added.");
         Console.WriteLine();
     }
 
-   void removeTodo(char todoIndex)
+    void RemoveTodo(char todoIndex)
     {
-        string removedTodo = "";
-   
-        bool successParse = int.TryParse(todoIndex.ToString(), out int number);
+  
+            string removedTodo = "";
 
-        if (!(successParse))
-        {
+            bool successParse = int.TryParse(todoIndex.ToString(), out int number);
 
-            Console.WriteLine("Not a number. Please provide valid input.");
-            char newTodoIndex = getUserInput();
-            removeTodo(newTodoIndex);
-            return;
-        }
-
-         int parsedTodoIndexInput = int.Parse(todoIndex.ToString());
-     
-         if (parsedTodoIndexInput > stringList.Count) {
-
-            Console.WriteLine("That index does not exist. Please provide correct input.");
-            char newTodoIndex = getUserInput();
-            removeTodo(newTodoIndex);
-        }
-
-        
-        for (var i = 0; i < stringList.Count; i++)
-        {
-            if (i == parsedTodoIndexInput - 1)
+            if (!(successParse))
             {
-                removedTodo = stringList[i];
-                break;
+
+                Console.WriteLine("Not a number. Please provide valid input.");
+                char newTodoIndex = GetUserInput();
+                RemoveTodo(newTodoIndex);
+                return;
             }
 
+            int parsedTodoIndexInput = int.Parse(todoIndex.ToString());
+
+            if (parsedTodoIndexInput > StringList.Count)
+            {
+
+                Console.WriteLine("That index does not exist. Please provide correct input.");
+                char newTodoIndex = GetUserInput();
+                RemoveTodo(newTodoIndex);
+            }
+
+
+            for (var i = 0; i < StringList.Count; i++)
+            {
+                if (i == parsedTodoIndexInput - 1)
+                {
+                    removedTodo = StringList[i];
+                    break;
+                }
+
+            }
+
+            StringList.RemoveAt(parsedTodoIndexInput - 1);
+            Console.WriteLine("You have succesfully removed the todo: " + removedTodo);
+            Console.WriteLine();
+
         }
 
-         stringList.RemoveAt(parsedTodoIndexInput - 1);
-         Console.WriteLine("You have succesfully removed the todo: " + removedTodo);
-         Console.WriteLine();
-
     }
-}
+
 
 
 

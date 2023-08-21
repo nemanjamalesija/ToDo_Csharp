@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 
-
 public class Calculator
 {
-    string userInput = string.Empty;
-    double firstOperand;
-    double secondOperand;
-    char operation;
-    double result;
-  
-    public string Sir { get; set; }
+    private string UserInput { get; set; }
+    private double FirstOperand { get; set; }
+    private double SecondOperand { get; set; }
+    private char Operation { get; set; }
+    private double Result { get; set; }
+    private char Restart { get; set; }
+
 
     public static void Main()
     {
