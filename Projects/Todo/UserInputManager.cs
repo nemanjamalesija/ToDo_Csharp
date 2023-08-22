@@ -1,8 +1,9 @@
 ﻿
 class UserInputManager 
 {
+    readonly List<string> StringList = new();
 
-    static string GetNewTodo()
+    public string GetNewTodoInput()
     {
         string newTodo = Console.ReadLine() ?? "";
         return newTodo;
