@@ -1,8 +1,6 @@
 ﻿
 class UserInputManager 
 {
-    readonly List<string> StringList = new();
-
     public string GetNewTodoInput()
     {
         string newTodo = Console.ReadLine() ?? "";
@@ -43,5 +41,4 @@ class UserInputManager
         Console.WriteLine();
 
     }
-
 }

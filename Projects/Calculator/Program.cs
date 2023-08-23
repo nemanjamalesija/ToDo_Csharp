@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 
+
 public class Calculator
 {
-    private string UserInput { get; set; }
+    private string UserInput { get; set; } = string.Empty;
     private double FirstOperand { get; set; }
     private double SecondOperand { get; set; }
     private char Operation { get; set; }
     private double Result { get; set; }
-    private char Restart { get; set; }
+
+    readonly Operator Operator = new();
+
 
 
     public static void Main()
@@ -19,40 +22,41 @@ public class Calculator
         Calculator calculator = new Calculator();
         calculator.initializeProgram();
 
+
     }
 
-    void initializeProgram()
+        public void initializeProgram()
     {
         Console.WriteLine("Please enter first number.");
-        firstOperand = validateUserInput();
+        FirstOperand = validateUserInput();
 
         Console.WriteLine("Please enter second number.");
-        secondOperand = validateUserInput();
+        SecondOperand = validateUserInput();
 
         defineOperation();
 
 
-        if (operation == 'a')
+        if (Operation == 'a')
         {
-            result = add(firstOperand, secondOperand);
+            Result = Operator.add(FirstOperand, SecondOperand);
         }
 
-        if (operation == 's')
+        if (Operation == 's')
         {
-            result = subtract(firstOperand, secondOperand);
+            Result = Operator.subtract(FirstOperand, SecondOperand);
         }
 
-        if (operation == 'm')
+        if (Operation == 'm')
         {
-            result = multiply(firstOperand, secondOperand);
+            Result = Operator.multiply(FirstOperand, SecondOperand);
         }
 
-        if (operation == 'd')
+        if (Operation == 'd')
         {
-            result = divide(firstOperand, secondOperand);
+            Result = Operator.divide(FirstOperand, SecondOperand);
         }
 
-        Console.WriteLine($"Result: {result}");
+        Console.WriteLine($"Result: {Result}");
         restartOrExit();
     }
 
@@ -64,8 +68,8 @@ public class Calculator
 
         do
         {
-            userInput = Console.ReadLine() ?? "";
-            isDouble = double.TryParse(userInput, out intCompared);
+            UserInput = Console.ReadLine() ?? "";
+            isDouble = double.TryParse(UserInput, out intCompared);
 
             if (!isDouble)
             {
@@ -76,7 +80,7 @@ public class Calculator
 
 
 
-        return double.Parse(userInput);
+        return double.Parse(UserInput);
     }
 
     
@@ -92,45 +96,18 @@ public class Calculator
         do
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(true); // Read a single key without displaying it
-            operation = char.ToLower(keyInfo.KeyChar);
+            Operation = char.ToLower(keyInfo.KeyChar);
 
-            if (operation != 'a' && operation != 's' && operation != 'm' && operation != 'd')
+            if (Operation != 'a' && Operation != 's' && Operation != 'm' && Operation != 'd')
             {
                 Console.WriteLine("Please provide a valid operation.");
             }
         }
 
-        while (operation != 'a' && operation != 's' &&  operation != 'm' && operation != 'd');
+        while (Operation != 'a' && Operation != 's' &&  Operation != 'm' && Operation != 'd');
 
     }
 
-    // operations
-    double add(double a, double b)
-    {
-        return a + b;
-    }
-
-    double subtract(double a, double b)
-    {
-        return a - b;
-    }
-
-    double multiply(double a, double b)
-    {
-        return a * b;
-    }
-
-    double divide(double a, double b)
-    {
-
-        if (a == 0 || b == 0)
-        {
-            Console.WriteLine("Cannot divide by 0.");
-            initializeProgram();
-        }
-
-        return a / b;
-    }
 
     void restartOrExit()
     {
@@ -141,15 +118,15 @@ public class Calculator
         do
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(true); // Read a single key without displaying it
-            restart = char.ToLower(keyInfo.KeyChar);
+            Result = char.ToLower(keyInfo.KeyChar);
 
 
-            if (restart == 'y')
+            if (Result == 'y')
             {
                 initializeProgram();
             }
 
-            if (restart == 'n')
+            if (Result == 'n')
             {
                 Environment.Exit(0);
             }
@@ -160,7 +137,7 @@ public class Calculator
             }
         }
 
-        while (restart != 'y' && restart != 'n');
+        while (Result != 'y' && Result != 'n');
 
     }
 }

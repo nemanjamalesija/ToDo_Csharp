@@ -1,11 +1,11 @@
 ﻿class TodoManager
 {
-    private List<string> todoList = new();
+    private List<string> TodoList = new();
 
     readonly UserInputManager InputManager = new();
-    void PrintTodos()
+    public void PrintTodos()
     {
-        if (todoList.Count == 0)
+        if (TodoList.Count == 0)
         {
 
             Console.WriteLine("You have no todos.");
@@ -13,15 +13,15 @@
             return;
         }
 
-        for (int i = 0; i < todoList.Count; i++)
+        for (int i = 0; i < TodoList.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {todoList[i]}");
+            Console.WriteLine($"{i + 1}. {TodoList[i]}");
         }
 
         Console.WriteLine();
     }
 
-    void AddTodo(string todo)
+   public void AddTodo(string todo)
     {
 
         if (todo == "")
@@ -33,7 +33,7 @@
 
         }
 
-        if (todoList.Contains(todo))
+        if (TodoList.Contains(todo))
         {
 
             Console.WriteLine("This todo is already in your list of todos.");
@@ -43,12 +43,12 @@
 
         }
 
-        todoList.Add(todo);
+        TodoList.Add(todo);
         Console.WriteLine("Todo added.");
         Console.WriteLine();
     }
 
-    void RemoveTodo(char todoIndex)
+    public void RemoveTodo(char todoIndex)
     {
 
         string removedTodo = "";
@@ -66,7 +66,7 @@
 
         int parsedTodoIndexInput = int.Parse(todoIndex.ToString());
 
-        if (parsedTodoIndexInput > todoList.Count)
+        if (parsedTodoIndexInput > TodoList.Count)
         {
 
             Console.WriteLine("That index does not exist. Please provide correct input.");
@@ -75,21 +75,19 @@
         }
 
 
-        for (var i = 0; i < todoList.Count; i++)
+        for (var i = 0; i < TodoList.Count; i++)
         {
             if (i == parsedTodoIndexInput - 1)
             {
-                removedTodo = todoList[i];
+                removedTodo = TodoList[i];
                 break;
             }
 
         }
 
-        todoList.RemoveAt(parsedTodoIndexInput - 1);
+        TodoList.RemoveAt(parsedTodoIndexInput - 1);
         Console.WriteLine("You have succesfully removed the todo: " + removedTodo);
         Console.WriteLine();
 
     }
-
-
 }

@@ -23,7 +23,8 @@
                 InputManager.AskUserForActionSARE();
                 UserChoiceSARE = InputManager.GetUserInput();
 
-            if (!InputManager.ValidateUserChoiceSARE(UserChoiceSARE))
+                if (!InputManager.ValidateUserChoiceSARE(UserChoiceSARE))
+
                 {
 
                 Console.WriteLine("Please select correct input.");
@@ -52,7 +53,7 @@
                         return;
                     }
 
-                    Console.WriteLine("Select the index of todo you want to remove:");
+                   Console.WriteLine("Select the index of todo you want to remove:");
                    TodoManager.PrintTodos();
                    UserChoiceTODO = InputManager.GetUserInput();
                    TodoManager.RemoveTodo(UserChoiceTODO);
@@ -64,5 +65,4 @@
                 }
             }
         }
-
-    }
+   }
