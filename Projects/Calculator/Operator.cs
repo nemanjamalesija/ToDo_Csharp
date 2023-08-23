@@ -24,7 +24,7 @@ class Operator
         {
             Console.WriteLine("Cannot divide by 0.");
             Calculator calculator = new Calculator();
-            calculator.initializeProgram();
+            calculator.InitializeProgram();
         }
 
         return a / b;

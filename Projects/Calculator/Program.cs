@@ -1,39 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-
-
+﻿
 public class Calculator
 {
-    private string UserInput { get; set; } = string.Empty;
-    private double FirstOperand { get; set; }
-    private double SecondOperand { get; set; }
-    private char Operation { get; set; }
-    private double Result { get; set; }
+    private double FirstOperand;
+    private double SecondOperand;
+    private char Operation;
+    private double Result;
 
     readonly Operator Operator = new();
+    readonly UserInputValidator UserInputValidator = new();
 
 
 
     public static void Main()
     {
         Calculator calculator = new Calculator();
-        calculator.initializeProgram();
+        calculator.InitializeProgram();
 
 
     }
 
-        public void initializeProgram()
+        public void InitializeProgram()
     {
         Console.WriteLine("Please enter first number.");
-        FirstOperand = validateUserInput();
+        FirstOperand = UserInputValidator.ValidateOperandInput();
 
         Console.WriteLine("Please enter second number.");
-        SecondOperand = validateUserInput();
+        SecondOperand =  UserInputValidator.ValidateOperandInput();
 
-        defineOperation();
+        Operation = UserInputValidator.DefineOperation();
 
 
         if (Operation == 'a')
@@ -57,87 +51,6 @@ public class Calculator
         }
 
         Console.WriteLine($"Result: {Result}");
-        restartOrExit();
-    }
-
-    double validateUserInput()
-    { 
-
-        double intCompared;
-        bool isDouble;
-
-        do
-        {
-            UserInput = Console.ReadLine() ?? "";
-            isDouble = double.TryParse(UserInput, out intCompared);
-
-            if (!isDouble)
-            {
-                Console.WriteLine("Please provide valid input");
-            }
-
-        } while (!isDouble);
-
-
-
-        return double.Parse(UserInput);
-    }
-
-    
-
-    void defineOperation()
-    {
-        Console.WriteLine("What would you like to do?");
-        Console.WriteLine("[A]dd");
-        Console.WriteLine("[S]ubtract");
-        Console.WriteLine("[M]ultiple");
-        Console.WriteLine("[D]ivide");
-
-        do
-        {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true); // Read a single key without displaying it
-            Operation = char.ToLower(keyInfo.KeyChar);
-
-            if (Operation != 'a' && Operation != 's' && Operation != 'm' && Operation != 'd')
-            {
-                Console.WriteLine("Please provide a valid operation.");
-            }
-        }
-
-        while (Operation != 'a' && Operation != 's' &&  Operation != 'm' && Operation != 'd');
-
-    }
-
-
-    void restartOrExit()
-    {
-
-        Console.WriteLine("Press Y to restart, press N to exit.");
-
-
-        do
-        {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true); // Read a single key without displaying it
-            Result = char.ToLower(keyInfo.KeyChar);
-
-
-            if (Result == 'y')
-            {
-                initializeProgram();
-            }
-
-            if (Result == 'n')
-            {
-                Environment.Exit(0);
-            }
-
-            else
-            {
-                Console.WriteLine("Please provide valid input: Y to restart, N to exit.");
-            }
-        }
-
-        while (Result != 'y' && Result != 'n');
-
+        UserInputValidator.RestartOrExit();
     }
 }
